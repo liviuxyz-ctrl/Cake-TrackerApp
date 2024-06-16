@@ -57,7 +57,7 @@ source $SCRIPT_DIR/env/bin/activate
 
 # Install Django and Django REST framework
 echo "Installing Django and Django REST framework..."
-pip install django djangorestframework
+pip install django djangorestframework django-cors-headers
 
 # Navigate to the backend directory
 BACKEND_DIR="$SCRIPT_DIR/Datavid-Cake-Tracker/datavid-cake-tracker-backend"
