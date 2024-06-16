@@ -2,6 +2,7 @@ from rest_framework import generics
 from .models import Member
 from .serializers import MemberSerializer
 from datetime import date, timedelta
+from django.db import models  # Correct import for Django models
 
 class MemberListCreate(generics.ListCreateAPIView):
     queryset = Member.objects.all()
