@@ -27,8 +27,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKEND_DIR="$SCRIPT_DIR/Datavid-Cake-Tracker/datavid-cake-tracker-backend"
 FRONTEND_DIR="$SCRIPT_DIR/Datavid-Cake-Tracker/datavid-cake-tracker-frontend/datavid-cake_app"
 
-BACKEND_COMMAND="cd $BACKEND_DIR && source ../env/bin/activate && python manage.py runserver"
-FRONTEND_COMMAND="cd $FRONTEND_DIR && npm run dev"
+BACKEND_COMMAND="cd $BACKEND_DIR && source $SCRIPT_DIR/env/bin/activate && python manage.py runserver"
+FRONTEND_COMMAND="cd $FRONTEND_DIR && npm install && npm run dev"
 
 echo "Starting Django backend..."
 open_new_terminal "$BACKEND_COMMAND"

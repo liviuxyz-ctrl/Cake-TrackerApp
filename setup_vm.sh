@@ -36,20 +36,20 @@ else
     echo "Node.js is already installed."
 fi
 
-# Ensure we are in the correct directory
-TARGET_DIR="$(pwd)"
+# Get the absolute path of the current script
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Ensure the Python virtual environment is set up
 echo "Setting up Python virtual environment..."
-python3 -m venv env
-source env/bin/activate
+python3 -m venv $SCRIPT_DIR/env
+source $SCRIPT_DIR/env/bin/activate
 
 # Install Django and Django REST framework
 echo "Installing Django and Django REST framework..."
 pip install django djangorestframework
 
 # Navigate to the backend directory
-BACKEND_DIR="$TARGET_DIR/datavid-cake-tracker-backend"
+BACKEND_DIR="$SCRIPT_DIR/Datavid-Cake-Tracker/datavid-cake-tracker-backend"
 if [ -d "$BACKEND_DIR" ]; then
     cd $BACKEND_DIR
     echo "Applying migrations..."
@@ -61,7 +61,7 @@ else
 fi
 
 # Navigate to the frontend directory and install dependencies
-FRONTEND_DIR="$TARGET_DIR/datavid-cake-tracker-frontend/datavid-cake_app"
+FRONTEND_DIR="$SCRIPT_DIR/Datavid-Cake-Tracker/datavid-cake-tracker-frontend/datavid-cake_app"
 if [ -d "$FRONTEND_DIR" ]; then
     cd $FRONTEND_DIR
     echo "Installing frontend dependencies..."
