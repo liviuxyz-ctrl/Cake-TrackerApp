@@ -27,6 +27,11 @@ else
     echo "NVM is already installed."
 fi
 
+# Load NVM to ensure Node.js and npm commands are available
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # Install Node.js (latest LTS version)
 if ! command_exists node || ! command_exists npm; then
     echo "Installing Node.js (latest LTS version)..."
@@ -34,6 +39,12 @@ if ! command_exists node || ! command_exists npm; then
     nvm use --lts
 else
     echo "Node.js is already installed."
+fi
+
+# Verify npm installation
+if ! command_exists npm; then
+    echo "npm installation failed. Please check the installation steps."
+    exit 1
 fi
 
 # Get the absolute path of the current script
@@ -71,7 +82,8 @@ else
     exit 1
 fi
 
-# Instructions to start the development servers
-echo "Setup complete. To start the development servers, use the following commands:"
+
+echo -e "\033[0;31mSetup complete. Please close this terminal session and open a new one before starting the servers.\033[0m"
+echo "To start the development servers, use the following commands:"
 echo "Django backend: cd datavid-cake-tracker-backend && source ../env/bin/activate && python manage.py runserver"
 echo "React frontend: cd datavid-cake-tracker-frontend/datavid-cake_app && npm run dev"
