@@ -1,0 +1,32 @@
+{
+  "name": "Datavid Cake Tracker",
+  "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9",
+  "features": {
+    "docker-in-docker": "latest",
+    "github-cli": "latest"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+  "forwardPorts": [
+    8000,
+    3000
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "Django Server",
+      "onAutoForward": "openBrowser"
+    },
+    "3000": {
+      "label": "React Server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "remoteUser": "vscode"
+}
