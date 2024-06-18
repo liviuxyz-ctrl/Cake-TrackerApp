@@ -1,4 +1,4 @@
-# Datavid Cake Tracker 🎂
+# Datavid Cake Tracker 🎂🎂
 
 Datavid Cake Tracker is a management tool designed to keep track of Datavid members' birthdays. This helps ensure that every member is celebrated, even in a remote, multinational company. 🎉
 
