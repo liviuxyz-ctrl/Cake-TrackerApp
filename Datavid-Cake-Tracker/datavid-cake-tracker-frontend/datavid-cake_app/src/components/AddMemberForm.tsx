@@ -1,5 +1,7 @@
+// src/components/AddMemberForm.tsx
 import React, { useState } from 'react';
 import { Member } from '../interfaces/Member';
+import '../styles/components/AddMemberForm.scss';
 
 interface AddMemberFormProps {
     onAddMember: (newMember: Member) => Promise<void>;
@@ -15,13 +17,7 @@ const AddMemberForm: React.FC<AddMemberFormProps> = ({ onAddMember, error }) => 
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        const newMember = { first_name: firstName, last_name: lastName, birth_date: birthDate, country, city };
-        await onAddMember(newMember);
-        setFirstName('');
-        setLastName('');
-        setBirthDate('');
-        setCountry('');
-        setCity('');
+        await onAddMember({ first_name: firstName, last_name: lastName, birth_date: birthDate, country, city });
     };
 
     return (

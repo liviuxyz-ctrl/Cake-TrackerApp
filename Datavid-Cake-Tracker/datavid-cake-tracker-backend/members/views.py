@@ -4,6 +4,17 @@ from .serializers import MemberSerializer
 from datetime import date, timedelta
 from django.db.models import Case, When, F, IntegerField
 
+import logging
+
+
+class MemberListCreate(generics.ListCreateAPIView):
+    queryset = Member.objects.all()
+    serializer_class = MemberSerializer
+
+    def create(self, request, *args, **kwargs):
+        logging.debug("Incoming data: %s", request.data)
+        return super().create(request, *args, **kwargs)
+
 
 class MemberListCreate(generics.ListCreateAPIView):
     queryset = Member.objects.all()

@@ -1,10 +1,12 @@
-
+// src/App.tsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AddMemberForm from './components/AddMemberForm';
 import MembersList from './components/MembersList';
 import axios from 'axios';
 import { Member } from './interfaces/Member';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.scss'; // Import the CSS file
 
 const App: React.FC = () => {
@@ -15,7 +17,9 @@ const App: React.FC = () => {
             const response = await axios.post<Member>('http://localhost:8000/api/members/', newMember);
             console.log('Member added:', response.data);
         } catch (err) {
-            setError((err as any).message);
+            const errorMessage = (err as any).response?.data?.detail || 'An error occurred';
+            setError(errorMessage);
+            toast.error(errorMessage);
         }
     };
 
@@ -53,6 +57,7 @@ const App: React.FC = () => {
                         } />
                     </Routes>
                 </main>
+                <ToastContainer />
             </div>
         </Router>
     );

@@ -1,10 +1,23 @@
 @import '../variables';
 
 .member-item {
+    padding: 10px;
+    margin: 5px 0;
     border: 1px solid $border-color;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
     border-radius: 5px;
-    background-color: $container-background-color;
-    color: $text-color;
+
+    &.red {
+        background-color: lighten($red-color, 40%);
+        color: $red-color;
+    }
+
+    &.orange {
+        background-color: lighten($orange-color, 40%);
+        color: $orange-color;
+    }
+
+    &.green {
+        background-color: lighten($green-color, 40%);
+        color: $green-color;
+    }
 }

@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
+// src/components/MembersList.tsx
+import '../styles/components/MembersList.scss';
+
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Member} from '../interfaces/Member';
+import { Member } from '../interfaces/Member';
 import MemberItem from './MemberItem';
-import '../styles/components/MembersList.scss'; // Import the CSS file
 
 const MembersList: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([]);
@@ -24,10 +26,10 @@ const MembersList: React.FC = () => {
     return (
         <div className="members-list">
             <h2>All Members</h2>
-            {error && <p className="error-message">Error: {error}</p>}
+            {error && <p className="error">Error: {error}</p>}
             <ul>
                 {members.map(member => (
-                    <MemberItem key={member.id} member={member}/>
+                    <MemberItem key={member.id} member={member} />
                 ))}
             </ul>
         </div>
