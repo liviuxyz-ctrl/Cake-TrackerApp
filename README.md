@@ -100,7 +100,7 @@ Datavid Cake Tracker is a management tool designed to keep track of Datavid memb
    - To clean up the environment, you can use the cleanup script.
    - ```bash
      bash vm_cleanup.sh
-     ```
+     ```Demo_gif.gif
 
 ## Usage 🚀
 
@@ -115,7 +115,7 @@ Once the setup is complete, you can access the application via `http://localhost
 
 Check out our short demo video showcasing the key features and how to use the Datavid Cake Tracker. 
 
-![Demo Video](./demo.gif)
+![Demo Video](./Demo_gif.gif)
 
 
 ## License 📜
