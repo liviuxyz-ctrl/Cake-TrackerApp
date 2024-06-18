@@ -1,0 +1,33 @@
+@import '../variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: $primary-color;
+  color: $button-text-color;
+
+  &__logo img {
+    height: 50px;
+  }
+
+  &__nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__nav li {
+    a {
+      text-decoration: none;
+      color: $button-text-color;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}

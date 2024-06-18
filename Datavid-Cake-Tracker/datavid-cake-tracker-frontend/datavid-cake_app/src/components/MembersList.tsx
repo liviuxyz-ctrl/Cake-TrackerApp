@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {Member} from '../interfaces/Member';
 import MemberItem from './MemberItem';
-import './MembersList.scss'; // Import the CSS file
+import '../styles/components/MembersList.scss'; // Import the CSS file
 
 const MembersList: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([]);

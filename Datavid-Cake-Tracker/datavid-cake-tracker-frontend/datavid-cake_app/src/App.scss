@@ -1,68 +1,92 @@
 @import './styles/_variables.scss';
 
-body {
+* {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: $background-color;
-    color: $text-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.main-container {
-    text-align: center;
-    background-color: $container-background-color;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+body, html, #root {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
 }
 
-h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-}
-
-form {
+.app-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 2rem;
+    min-height: 100vh;
 }
 
-input {
-    padding: 10px;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    background-color: $input-background-color;
-    color: $input-text-color;
-}
+.app-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
 
-button {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: $button-background-color;
-    color: $button-text-color;
-    cursor: pointer;
+    h1 {
+        margin: 0;
+    }
 
-    &:hover {
-        background-color: $button-background-color-hover;
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+
+            li {
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 0.5rem 1rem;
+                    border: 1px solid #512da8;
+                    border-radius: 4px;
+                    transition: background-color 0.3s;
+
+                    &:hover {
+                        background-color: #512da8;
+                    }
+                }
+            }
+        }
     }
 }
 
-ul {
-    list-style: none;
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.add-member-form, .members-list {
+    width: 100%;
+    max-width: 600px;
+}
+
+.members-list ul {
     padding: 0;
 }
 
-li {
-    background-color: $list-item-background-color;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid $border-color;
+.members-list li {
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #512da8;
+    border-radius: 4px;
 }
+
+input, button {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #512da8;
+    border-radius: 4px;
+}
+

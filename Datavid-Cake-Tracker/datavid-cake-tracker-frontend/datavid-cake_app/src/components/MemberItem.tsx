@@ -1,6 +1,6 @@
 import React from 'react';
 import { Member } from '../interfaces/Member';
-import './MemberItem.scss';
+import '../styles/components/MemberItem.scss';
 
 interface MemberItemProps {
     member: Member;
