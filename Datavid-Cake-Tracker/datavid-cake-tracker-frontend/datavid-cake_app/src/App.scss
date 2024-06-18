@@ -1,0 +1,68 @@
+@import './styles/_variables.scss';
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $background-color;
+    color: $text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-container {
+    text-align: center;
+    background-color: $container-background-color;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    background-color: $input-background-color;
+    color: $input-text-color;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: $button-background-color;
+    color: $button-text-color;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $button-background-color-hover;
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: $list-item-background-color;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid $border-color;
+}

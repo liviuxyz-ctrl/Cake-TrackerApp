@@ -1,36 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState} from 'react';
+import AddMemberForm from './components/AddMemberForm';
+import MembersList from './components/MembersList';
 import axios from 'axios';
-
-export interface Member {
-    id: number;
-    first_name: string;
-    last_name: string;
-    birth_date: string;
-}
+import {Member} from './interfaces/Member';
+import './App.scss'; // Import the CSS file
 
 const App: React.FC = () => {
-    const [members, setMembers] = useState<Member[]>([]);
+    const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        axios.get('/api/members/sorted/')
-            .then(response => {
-                setMembers(response.data);
-            })
-            .catch(error => {
-                console.error('There was an error fetching the members!', error);
-            });
-    }, []);
+    const addMember = async (newMember: Member) => {
+        try {
+            const response = await axios.post<Member>('http://localhost:8000/api/members/', newMember);
+            console.log('Member added:', response.data);
+        } catch (err) {
+            setError((err as any).message);
+        }
+    };
 
     return (
-        <div>
-            <h1>Members List</h1>
-            <ul>
-                {members.map((member) => (
-                    <li key={member.id}>
-                        {member.first_name} {member.last_name} - {member.birth_date}
-                    </li>
-                ))}
-            </ul>
+        <div className="app-container">
+            <h1>Datavid Cake Tracker</h1>
+            <AddMemberForm onAddMember={addMember} error={error}/>
+            <MembersList/>
         </div>
     );
 };

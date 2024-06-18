@@ -2,11 +2,13 @@ from rest_framework import generics
 from .models import Member
 from .serializers import MemberSerializer
 from datetime import date, timedelta
-from django.db import models  # Correct import for Django models
+from django.db.models import Case, When, F, IntegerField
+
 
 class MemberListCreate(generics.ListCreateAPIView):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+
 
 class MemberListSorted(generics.ListAPIView):
     serializer_class = MemberSerializer
@@ -15,24 +17,24 @@ class MemberListSorted(generics.ListAPIView):
         today = date.today()
         upcoming_birthdays = Member.objects.all().annotate(
             days_until_birthday=(
-                models.Case(
-                    models.When(
+                Case(
+                    When(
                         birth_date__month=today.month,
                         birth_date__day__gte=today.day,
-                        then=models.F('birth_date__day') - today.day
+                        then=F('birth_date__day') - today.day
                     ),
-                    models.When(
+                    When(
                         birth_date__month__gt=today.month,
                         then=(
-                                     models.F('birth_date__month') - today.month
-                             ) * 31 + models.F('birth_date__day') - today.day
+                                     F('birth_date__month') - today.month
+                             ) * 31 + F('birth_date__day') - today.day
                     ),
-                    models.When(
+                    When(
                         birth_date__month=today.month + 1,
-                        then=models.F('birth_date__day') + (31 - today.day)
+                        then=F('birth_date__day') + (31 - today.day)
                     ),
-                    default=models.F('birth_date') + timedelta(days=365) - today,
-                    output_field=models.IntegerField()
+                    default=F('birth_date') + timedelta(days=365) - today,
+                    output_field=IntegerField()
                 )
             )
         ).order_by('days_until_birthday')

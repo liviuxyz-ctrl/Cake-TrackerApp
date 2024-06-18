@@ -6,4 +6,3 @@ export interface Member {
     country: string;
     city: string;
 }
-

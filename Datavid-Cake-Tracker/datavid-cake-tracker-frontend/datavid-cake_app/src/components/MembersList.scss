@@ -1,0 +1,14 @@
+/* src/components/MembersList.scss */
+@import '../styles/_variables.scss';
+.members-list {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+h2 {
+    color: $text-color;
+}

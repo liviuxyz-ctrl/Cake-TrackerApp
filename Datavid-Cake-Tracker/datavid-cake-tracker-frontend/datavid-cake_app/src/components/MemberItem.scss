@@ -1,0 +1,10 @@
+@import '../styles/_variables.scss';
+
+.member-item {
+    border: 1px solid $border-color;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    background-color: $container-background-color;
+    color: $text-color;
+}
