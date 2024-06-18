@@ -114,7 +114,7 @@ Once the setup is complete, you can access the application via `http://localhost
 Check out our short demo video showcasing the key features and how to use the Datavid Cake Tracker. 
 
 ![Demo Video](./Demo_gif.gif)
-
+The quality aspec is caused by the conversion from a standard recording to a gif file :)).
 
 ## License 📜
 
