@@ -1,3 +1,5 @@
+Sure, I'll update the documentation to include a link to the demo video named `demo.webm` in the root folder.
+
 # Datavid Cake Tracker 🎂
 
 Datavid Cake Tracker is a management tool designed to keep track of Datavid members' birthdays. This helps ensure that every member is celebrated, even in a remote, multinational company. 🎉
@@ -108,6 +110,15 @@ Once the setup is complete, you can access the application via `http://localhost
 - **Edit Member WIP**: Add new members or update existing member information
 - **Calendar WIP**: View a calendar with upcoming birthdays
 - **Settings WIP**: Application settings and configurations
+
+## Demo Video 🎥
+
+Check out our short demo video showcasing the key features and how to use the Datavid Cake Tracker. 
+
+<video controls>
+  <source src="./demo.webm" type="video/webm">
+
+</video>
 
 ## License 📜
 
