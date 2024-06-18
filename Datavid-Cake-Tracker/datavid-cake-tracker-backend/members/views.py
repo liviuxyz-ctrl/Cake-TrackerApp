@@ -1,19 +1,9 @@
+# views.py
 from rest_framework import generics
 from .models import Member
 from .serializers import MemberSerializer
 from datetime import date, timedelta
 from django.db.models import Case, When, F, IntegerField
-
-import logging
-
-
-class MemberListCreate(generics.ListCreateAPIView):
-    queryset = Member.objects.all()
-    serializer_class = MemberSerializer
-
-    def create(self, request, *args, **kwargs):
-        logging.debug("Incoming data: %s", request.data)
-        return super().create(request, *args, **kwargs)
 
 
 class MemberListCreate(generics.ListCreateAPIView):
@@ -26,7 +16,7 @@ class MemberListSorted(generics.ListAPIView):
 
     def get_queryset(self):
         today = date.today()
-        upcoming_birthdays = Member.objects.all().annotate(
+        upcoming_birthdays = Member.objects.annotate(
             days_until_birthday=(
                 Case(
                     When(
@@ -37,14 +27,14 @@ class MemberListSorted(generics.ListAPIView):
                     When(
                         birth_date__month__gt=today.month,
                         then=(
-                                     F('birth_date__month') - today.month
-                             ) * 31 + F('birth_date__day') - today.day
+                                (F('birth_date__month') - today.month) * 31 + F('birth_date__day') - today.day
+                        )
                     ),
                     When(
                         birth_date__month=today.month + 1,
                         then=F('birth_date__day') + (31 - today.day)
                     ),
-                    default=F('birth_date') + timedelta(days=365) - today,
+                    default=F('birth_date__day') + timedelta(days=365) - today,
                     output_field=IntegerField()
                 )
             )

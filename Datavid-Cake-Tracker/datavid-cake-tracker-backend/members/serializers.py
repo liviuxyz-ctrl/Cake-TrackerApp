@@ -1,18 +1,22 @@
+# serializers.py
 from rest_framework import serializers
 from .models import Member
 from datetime import date
-from rest_framework.exceptions import ValidationError
 
 
 class MemberSerializer(serializers.ModelSerializer):
+    days_until_birthday = serializers.SerializerMethodField()
+
     class Meta:
         model = Member
-        fields = '__all__'
+        fields = ['id', 'first_name', 'last_name', 'birth_date', 'country', 'city', 'days_until_birthday']
 
-    def validate_birth_date(self, value):
-        if value > date.today():
-            raise ValidationError("Birth date cannot be in the future.")
-        age = date.today().year - value.year
-        if age < 18:
-            raise ValidationError("Member must be at least 18 years old.")
-        return value
+    def get_days_until_birthday(self, obj):
+        today = date.today()
+        next_birthday = date(today.year, obj.birth_date.month, obj.birth_date.day)
+
+        if next_birthday < today:
+            next_birthday = date(today.year + 1, obj.birth_date.month, obj.birth_date.day)
+
+        delta = next_birthday - today
+        return delta.days
