@@ -115,10 +115,8 @@ Once the setup is complete, you can access the application via `http://localhost
 
 Check out our short demo video showcasing the key features and how to use the Datavid Cake Tracker. 
 
-<video controls>
-  <source src="./demo.webm" type="video/webm">
+![Demo Video](./demo.gif)
 
-</video>
 
 ## License 📜
 
