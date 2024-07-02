@@ -5,4 +5,5 @@ export interface Member {
     birth_date: string;
     country: string;
     city: string;
+    days_until_birthday: number;
 }

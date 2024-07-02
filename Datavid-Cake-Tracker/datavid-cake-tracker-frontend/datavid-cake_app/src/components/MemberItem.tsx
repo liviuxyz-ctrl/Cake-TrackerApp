@@ -9,27 +9,13 @@ interface MemberItemProps {
 }
 
 const MemberItem: React.FC<MemberItemProps> = ({ member }) => {
-    const daysUntilBirthday = calculateDaysUntilBirthday(new Date(member.birth_date));
+    const daysUntilBirthday = member.days_until_birthday;
 
     return (
         <li className={`member-item ${getBirthdayClass(daysUntilBirthday)}`}>
             {member.first_name} {member.last_name} - {new Date(member.birth_date).toLocaleDateString()} - {daysUntilBirthday} days until birthday
         </li>
     );
-};
-
-const calculateDaysUntilBirthday = (birthDate: Date): number => {
-    const today = new Date();
-    const nextBirthday = new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate());
-
-    if (nextBirthday < today) {
-        nextBirthday.setFullYear(today.getFullYear() + 1);
-    }
-
-    const diffTime = Math.abs(nextBirthday.getTime() - today.getTime());
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    return diffDays;
 };
 
 const getBirthdayClass = (days: number): string => {

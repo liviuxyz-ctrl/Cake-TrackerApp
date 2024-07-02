@@ -17,7 +17,12 @@ const AddMemberForm: React.FC<AddMemberFormProps> = ({ onAddMember, error }) => 
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        await onAddMember({ first_name: firstName, last_name: lastName, birth_date: birthDate, country, city });
+        await onAddMember({
+            first_name: firstName, last_name: lastName, birth_date: birthDate, country, city,
+            id: 0,
+            days_until_birthday: 0
+        });
+        window.location.reload();
     };
 
     return (

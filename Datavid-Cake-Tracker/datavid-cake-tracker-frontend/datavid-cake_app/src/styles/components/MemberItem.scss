@@ -1,23 +1,22 @@
-@import '../variables';
-
 .member-item {
+    list-style-type: none;
     padding: 10px;
-    margin: 5px 0;
-    border: 1px solid $border-color;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
     border-radius: 5px;
 
     &.red {
-        background-color: lighten($red-color, 40%);
-        color: $red-color;
+        background-color: #ffdddd;
+        color: #d8000c;
     }
 
     &.orange {
-        background-color: lighten($orange-color, 40%);
-        color: $orange-color;
+        background-color: #fff5e6;
+        color: #9f6000;
     }
 
     &.green {
-        background-color: lighten($green-color, 40%);
-        color: $green-color;
+        background-color: #ddffdd;
+        color: #4f8a10;
     }
 }

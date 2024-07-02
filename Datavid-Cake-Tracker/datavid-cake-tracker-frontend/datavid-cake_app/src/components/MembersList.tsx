@@ -1,6 +1,4 @@
 // src/components/MembersList.tsx
-import '../styles/components/MembersList.scss';
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Member } from '../interfaces/Member';
@@ -8,27 +6,27 @@ import MemberItem from './MemberItem';
 
 const MembersList: React.FC = () => {
     const [members, setMembers] = useState<Member[]>([]);
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchMembers = async () => {
             try {
                 const response = await axios.get<Member[]>('http://localhost:8000/api/members/sorted/');
                 setMembers(response.data);
-            } catch (err) {
-                setError((err as any).message);
+            } catch (error) {
+                console.error('Error fetching members:', error);
             }
         };
 
         fetchMembers();
     }, []);
 
+    const sortedMembers = [...members].sort((a, b) => a.days_until_birthday - b.days_until_birthday);
+
     return (
-        <div className="members-list">
-            <h2>All Members</h2>
-            {error && <p className="error">Error: {error}</p>}
+        <div>
+            <h2>Ordered list with birthdays:</h2>
             <ul>
-                {members.map(member => (
+                {sortedMembers.map((member) => (
                     <MemberItem key={member.id} member={member} />
                 ))}
             </ul>

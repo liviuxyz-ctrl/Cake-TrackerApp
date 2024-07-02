@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Member } from './interfaces/Member';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.scss'; // Import the CSS file
+import './App.scss'; // Import the CSS filefile
 
 const App: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
@@ -48,13 +48,13 @@ const App: React.FC = () => {
                         } />
                         <Route path="/edit-member" element={<div>Edit Member Page</div>} />
                         <Route path="/calendar" element={<div>Calendar Page</div>} />
-                        <Route path="/settings" element={<div>Settings Page</div>} />
-                        <Route path="/temp" element={
-                            <>
-                                <AddMemberForm onAddMember={addMember} error={error} />
-                                <MembersList />
-                            </>
-                        } />
+                        {/*<Route path="/settings" element={<div>Settings Page</div>} />*/}
+                        {/*<Route path="/temp" element={*/}
+                        {/*    <>*/}
+                        {/*        <AddMemberForm onAddMember={addMember} error={error} />*/}
+                        {/*        <MembersList />*/}
+                        {/*    </>*/}
+                        {/*} />*/}
                     </Routes>
                 </main>
                 <ToastContainer />
