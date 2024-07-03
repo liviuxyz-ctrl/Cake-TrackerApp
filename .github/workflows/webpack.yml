@@ -1,0 +1,33 @@
+name: Workflow Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Run Setup VM Script
+      run: |
+        chmod +x ./setup_vm.sh
+        ./setup_vm.sh
+
+    - name: Run Start Servers Script
+      run: |
+        chmod +x ./start_servers.sh
+        ./start_servers.sh
