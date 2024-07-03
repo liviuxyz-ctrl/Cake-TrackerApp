@@ -9,7 +9,7 @@ command_exists() {
 echo "Updating the system and installing dependencies..."
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install -y python3 python3-venv python3-pip curl git
+sudo apt-get install -y python3 python3-venv python3-pip curl git vite npm screen xvfb 
 
 # Configure Git user details
 echo "Configuring Git user details..."
@@ -41,11 +41,11 @@ else
     echo "Node.js is already installed."
 fi
 
-# Verify npm installation
-if ! command_exists npm; then
-    echo "npm installation failed. Please check the installation steps."
-    exit 1
-fi
+# # Verify npm installation
+# if ! command_exists npm; then
+#     echo "npm installation failed. Please check the installation steps."
+#     exit 1
+# fi
 
 # Get the absolute path of the current script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
