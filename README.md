@@ -1,6 +1,6 @@
-# Datavid Cake Tracker 🎂🎂
+#  Cake Tracker 🎂🎂
 
-Datavid Cake Tracker is a management tool designed to keep track of Datavid members' birthdays. This helps ensure that every member is celebrated, even in a remote, multinational company. 🎉
+Cake Tracker is a management tool designed to keep track of members' birthdays. This helps ensure that every member is celebrated, even in a remote, multinational company. 🎉
 
 ## Features
 
@@ -110,7 +110,7 @@ Once the setup is complete, you can access the application via `http://localhost
 
 ## Demo Video 🎥
 
-Check out our short demo video showcasing the key features and how to use the Datavid Cake Tracker. 
+Check out our short demo video showcasing the key features and how to use the  Cake Tracker. 
 
 ![Demo Video](./Demo_gif.gif)
 The quality aspec is caused by the conversion from a standard recording to a gif file :)).
